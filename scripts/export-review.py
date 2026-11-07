@@ -2,6 +2,7 @@
 
 import argparse
 import base64
+import html
 import json
 import mimetypes
 import re
@@ -22,7 +23,8 @@ def export(output):
     if len(stylesheets) != 1:
         raise RuntimeError("Run npm run build before exporting the review files.")
 
-    pictures = {path.name: data_url(path) for path in (root / "public/assets").glob("*.webp")}
+    asset_paths = sorted(path for path in (root / "public/assets").iterdir() if path.is_file())
+    pictures = {path.name: data_url(path) for path in asset_paths}
     content = (root / "src/content.js").read_text().replace("export const ", "const ")
     portable_content = content.replace("/assets/", "./assets/")
     image_expression = "url: `/assets/project-${String(id).padStart(2, '0')}.webp`, caption, alt,"
@@ -30,7 +32,8 @@ def export(output):
     if content.count(image_expression) != 1:
         raise RuntimeError("The photograph catalogue changed; update the review exporter.")
     content = content.replace(image_expression, embedded_expression)
-    content = content.replace("/assets/tinas-house-cover.webp", pictures["tinas-house-cover.webp"])
+    for name, image_data in pictures.items():
+        content = content.replace("/assets/" + name, image_data)
 
     rendered = subprocess.run(
         ["node", "--input-type=module", "-e", 'import { renderWebsite } from "./src/render.js"; process.stdout.write(renderWebsite());'],
@@ -60,7 +63,10 @@ def export(output):
         return match.group(0)
 
     css = re.sub(r"url\(([^)]+)\)", embed_font, stylesheets[0].read_text())
-    script = "(() => {\n'use strict';\nconst reviewPictures=" + json.dumps(pictures, ensure_ascii=False) + ";\n" + content + "\n" + main + "\n})();"
+    # Only gallery photos need a JavaScript catalogue. Large decorative artwork
+    # and the logo are already embedded in the pre-rendered page.
+    gallery_pictures = {name: value for name, value in pictures.items() if name.startswith("project-") and name != "project-00.webp"}
+    script = "(() => {\n'use strict';\nconst reviewPictures=" + json.dumps(gallery_pictures, ensure_ascii=False) + ";\n" + content + "\n" + main + "\n})();"
     if "</script" in script.lower():
         raise RuntimeError("The review script contains an HTML closing delimiter.")
     page = (root / "index.html").read_text()
@@ -72,13 +78,17 @@ def export(output):
         raise RuntimeError("The application container changed; update the review exporter.")
     page = page.replace(app_entry, '<div id="app">' + rendered + '</div>')
     page = page.replace('href="/favicon.svg"', 'href="' + data_url(root / "public/favicon.svg") + '"')
-    page = page.replace("</head>", "<style>" + css + "</style></head>")
+    font_licences = (root / "public/font-licences.txt").read_text()
+    font_notice = '<template id="font-licences">' + html.escape(font_licences) + '</template>'
+    page = page.replace("</head>", font_notice + "<style>" + css + "</style></head>")
     entry = '<script type="module" src="/src/main.js"></script>'
     if page.count(entry) != 1:
         raise RuntimeError("The application entry changed; update the review exporter.")
     page = page.replace(entry, '<script>' + script + "</script>")
     interactive = output / "Your-Dream-Home-Interactive-Website.html"
     interactive.write_text(page, encoding="utf-8")
+    standalone_index = output / "index.html"
+    standalone_index.write_text(page, encoding="utf-8")
 
     # The review ZIP opens directly after extraction and needs no development server.
     portable_script = "(() => {\n'use strict';\n" + portable_content + "\n" + main + "\n})();"
@@ -86,13 +96,14 @@ def export(output):
         raise RuntimeError("The portable review script contains an HTML closing delimiter.")
     portable_page = shell.replace(app_entry, '<div id="app">' + portable_markup + '</div>')
     portable_page = portable_page.replace('href="/favicon.svg"', 'href="./favicon.svg"')
-    portable_page = portable_page.replace("</head>", "<style>" + css + "</style></head>")
+    portable_page = portable_page.replace("</head>", font_notice + "<style>" + css + "</style></head>")
     portable_page = portable_page.replace(entry, '<script>' + portable_script + "</script>")
     review_archive_path = output / "OPEN-WEBSITE.zip"
     with ZipFile(review_archive_path, "w", ZIP_DEFLATED) as archive:
         archive.writestr("index.html", portable_page)
         archive.write(root / "public/favicon.svg", "favicon.svg")
-        for path in sorted((root / "public/assets").glob("*.webp")):
+        archive.write(root / "public/font-licences.txt", "font-licences.txt")
+        for path in asset_paths:
             archive.write(path, "assets/" + path.name)
         archive.writestr("READ-ME.txt", (
             "Your Dream Home Renovations\n\n"
@@ -106,7 +117,7 @@ def export(output):
     with ZipFile(review_archive_path) as archive:
         if archive.testzip() is not None or archive.read("index.html") != portable_page.encode("utf-8"):
             raise RuntimeError("The direct-open website archive failed its integrity check.")
-        for path in (root / "public/assets").glob("*.webp"):
+        for path in asset_paths:
             if archive.read("assets/" + path.name) != path.read_bytes():
                 raise RuntimeError("A photograph is missing from the direct-open website archive.")
 
@@ -130,10 +141,11 @@ def export(output):
         for path in (root / "dist").rglob("*"):
             if path.is_file() and archive.read(str(path.relative_to(root / "dist"))) != path.read_bytes():
                 raise RuntimeError("The website archive does not match the build.")
+    print(f"Self-contained index.html: {standalone_index}")
     print(f"Interactive website: {interactive}")
     print(f"Extract and open index.html: {review_archive_path}")
     print(f"Hostable website ZIP: {archive_path}")
-    print(f"Original photographs embedded: {len(pictures)}")
+    print(f"Image assets embedded: {len(pictures)}")
 
 
 if __name__ == "__main__":

@@ -14,12 +14,14 @@ export const business = {
 export const pageCopy = {
   heroLead: 'Built around',
   heroAccent: 'you.',
-  heroDescription: 'From NDIS home modifications to complete renovations, building works, land clearing and fencing, we bring skill and care to every project.',
-  comparisonIntroduction: 'From built-in deck seating to refreshed shed exteriors, our improvements make everyday spaces more useful.',
-  portfolioIntroduction: 'Renovations, building works and property improvements for homes and commercial properties across Sydney.',
-  approach: 'We plan building and renovation solutions around your home, property and lifestyle. Practical needs and the way you want to live guide the work.',
-  commitment: 'Whether you need urgent accessibility improvements, a full property transformation or dependable outdoor works, we focus on clear communication, quality workmanship and lasting results.',
-  contactIntroduction: 'Tell us about the changes you have in mind, from an urgent accessibility modification to a major renovation or outdoor property works. We’ll help you work through the next step.',
+  heroDescription: 'Make more of the home you have. We carry out renovations, NDIS home modifications and outdoor building works across Sydney, with clear communication from the first conversation.',
+  comparisonIntroduction: 'See how we turned a small courtyard into a deck with built-in seating and gave a weathered shed a fresh exterior.',
+  portfolioIntroduction: 'Take a closer look at our work, from bathroom renovations and timber decks to shed improvements and land clearing.',
+  approach: 'It might be a bathroom that no longer suits you, a home that needs more room or a yard you’d like to use more. We’ll talk through what you need and help you decide where to start.',
+  commitment: 'You can expect clear communication and quality workmanship, whether we’re making one room easier to use or taking on a larger renovation.',
+  contactIntroduction: 'Tell us what you’d like to change and where your property is. We’ll get in touch to discuss the work and arrange a free quote.',
+  accessibilityIntroduction: 'Your home should be comfortable to move around in. We modify bathrooms, doorways and access points to help make everyday tasks safer and easier.',
+  accessibilityDetail: 'Every person uses their home differently. We’ll listen to what’s difficult now and talk through the changes that could help.',
 };
 
 const picture = (id, caption, alt) => ({
@@ -109,10 +111,10 @@ export const vision = {
 };
 
 export const services = [
-  { name: 'NDIS & accessibility', value: 'NDIS & Accessibility', text: 'We adapt bathrooms, ramps and doorways around individual needs to support safer, more accessible living at home.' },
-  { name: 'Major renovations', value: 'Major Renovations', text: 'From kitchens and bathrooms to new internal layouts and full-home transformations, we plan major upgrades around the way you want to live.' },
-  { name: 'Building works', value: 'Building Works', text: 'Alterations, additions and structural projects, with coordinated building works for residential and commercial properties.' },
+  { name: 'NDIS & accessibility', value: 'NDIS & Accessibility', text: 'Changes to a bathroom, ramp or doorway can make a difference to daily life. We work through your access needs with you and plan the modifications around how you use your home.' },
+  { name: 'Major renovations', value: 'Major Renovations', text: 'Update a kitchen or bathroom, change your internal layout or renovate the whole home. We’ll help you work through the scope so the finished space suits the way you live.' },
+  { name: 'Building works', value: 'Building Works', text: 'We carry out alterations, additions and structural building works for homes and commercial properties. Talk to us about the space you need and the building you have.' },
   { name: 'Land clearing', value: 'Land Clearing', text: 'We prepare properties through vegetation clearing and site clean-ups, subject to applicable approvals and site conditions.' },
-  { name: 'Fencing & outdoor works', value: 'Fencing & Outdoor Works', text: 'Boundary fencing, gates, decking and practical outdoor improvements that make more of your property.' },
-  { name: 'Property improvements', value: 'Property Improvements', text: 'Carefully managed repairs, refurbishments and improvements for homes and commercial spaces.' },
+  { name: 'Fencing & outdoor works', value: 'Fencing & Outdoor Works', text: 'Give your boundary a new fence, replace a gate or turn an unused corner into a deck. We build outdoor spaces you can enjoy and use every day.' },
+  { name: 'Property improvements', value: 'Property Improvements', text: 'We repair and refurbish homes and commercial spaces, including sheds and building exteriors. Let us know what needs attention and we’ll discuss the work with you.' },
 ];

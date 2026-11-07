@@ -196,6 +196,7 @@ motion(document.querySelector('.opening-description'), [{ opacity: 0, transform:
 motion(document.querySelector('.opening-actions'), [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 700, delay: 430 });
 motion(document.querySelector('.opening-photo'), [{ transform: 'scale(1.12)' }, { transform: 'scale(1.04)' }], { duration: 1700 });
 motion(document.querySelector('.hero-project-card'), [{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 950, delay: 520 });
+motion(document.querySelector('.wordmark'), [{ opacity: 0, transform: 'translateY(-8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 800 });
 
 let revealObserver;
 const revealed = new WeakSet();
@@ -208,6 +209,18 @@ function observeReveals() {
       const siblings = [...entry.target.parentElement.children].filter((child) => child.hasAttribute('data-reveal'));
       const offset = Math.max(0, siblings.indexOf(entry.target)) % 3;
       motion(entry.target, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 780, delay: offset * 75 });
+      if (entry.target.classList.contains('accessibility-visual')) {
+        motion(entry.target.querySelector('.accessibility-art'), [{ transform: 'scale(1.09)' }, { transform: 'scale(1)' }], { duration: 1500 });
+        motion(entry.target.querySelector('.accessibility-badge'), [{ opacity: 0, transform: 'translate(-18px, 16px)' }, { opacity: 1, transform: 'translate(0, 0)' }], { duration: 850, delay: 350 });
+      }
+      if (entry.target.classList.contains('comparison-panel')) {
+        entry.target.querySelectorAll('.comparison-figure').forEach((figure, index) => {
+          motion(figure, [{ opacity: .25, transform: `translateY(${index ? 26 : 12}px)` }, { opacity: 1, transform: 'translateY(0)' }], { duration: 850, delay: index * 150 });
+        });
+      }
+      if (entry.target.classList.contains('work-tile')) {
+        motion(entry.target.querySelector('.work-photo > img'), [{ transform: 'scale(1.065)' }, { transform: 'scale(1)' }], { duration: 1100 });
+      }
       revealObserver.unobserve(entry.target);
     });
   }, { threshold: .06, rootMargin: '0px 0px 45px 0px' });

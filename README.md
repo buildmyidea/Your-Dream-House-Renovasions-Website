@@ -14,9 +14,15 @@ Use clearly labelled buttons for actions and keep decorative arrows out of the d
 
 Public copy should focus on the supplied business details, services, customer benefits and actual project results. Keep detailed image descriptions in accessibility text. The photo viewer uses labelled Previous, Next and Close buttons and concise stage captions.
 
+The client feedback revision uses Bodoni Moda for headings, matching the high-contrast serif style in the supplied logo. The raster logo does not identify its original typeface. Main body copy is 20–21px after the final 3px increase, main buttons and navigation are 16px, and secondary buttons are 15px. Keep text readable on mobile; do not shrink it to fit an extra column.
+
+The enlarged header logo uses a transparent PNG derivative. The original WebP remains untouched. A dedicated NDIS home modifications section follows the hero, with its own navigation link, service enquiry button and an accessible-home illustration. The illustration is a service visual, not a photograph of completed work. NDIS provider registration has not been confirmed, so the page makes no registration claim and uses its own accessibility artwork rather than an official NDIS mark.
+
 ## Motion
 
 Motion uses native browser animations without an additional animation library. The headline and project card enter in stages, sections reveal as they approach the viewport, gallery filters animate card positions and grid height, and the photo viewer, service panels and mobile navigation have short transitions. The header adds a page-progress indicator and updates active navigation as visitors scroll.
+
+The NDIS illustration pans into place with a staggered accessibility badge. Before-and-after photographs enter in sequence, portfolio photographs gently settle into their frames, and the enlarged logo has a short entrance animation. These effects run once when the relevant content comes into view.
 
 All content is visible by default. Do not add a CSS rule that hides sections until JavaScript or an observer runs. The downloads must continue to show the full page if scripts are blocked. Reduced-motion preferences skip or cancel animations, remove the photo parallax and leave all controls working. Gallery filter animations clean up temporary clipping on completion or cancellation.
 
@@ -47,7 +53,7 @@ The production build is written to `dist/`. The production preview uses port 417
 - `src/style.css` contains the original design and responsive layouts.
 - `src/content.js` separates supplied business facts and photograph descriptions from presentation.
 - `scripts/export-review.py` exports the current design, copy and comparison section as a self-contained HTML file, a direct-open ZIP and a hostable production ZIP.
-- `public/assets/` preserves all 21 original WebP files without image edits.
+- `public/assets/` preserves all 21 original WebP files without image edits, alongside the transparent logo derivative and new accessibility illustration.
 
 ## Material and behaviour
 
@@ -83,8 +89,9 @@ npm run build
 python3 scripts/export-review.py --output-dir review
 ```
 
-The exporter writes three outputs:
+The exporter writes four outputs:
 
+- `index.html` is the self-contained download requested by the client. Save it and open it in a browser. Images, fonts, page content and interactions are included in the file.
 - `OPEN-WEBSITE.zip` is the recommended local review download. Extract the entire ZIP so `index.html`, `favicon.svg` and `assets/` stay together, then open the extracted `index.html` in a browser. It has pre-rendered page content, relative image paths, embedded fonts and an ordinary script. It needs no installation or development server.
 - `Your-Dream-Home-Interactive-Website.html` includes the entire page, images, fonts and interactions in one file. The full page content is present before scripts run. Browser previews that block scripts can still display the design; gallery controls require JavaScript.
 - `your-dream-home-renovations-website.zip` contains the Vite production build for a static web host. Its `index.html` requires a web server and is separate from the direct-open review package.
