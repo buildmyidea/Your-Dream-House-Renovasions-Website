@@ -1,5 +1,5 @@
 import './style.css';
-import { business, collections, vision } from './content.js';
+import { business, collections, showcaseGalleries } from './content.js';
 import { renderWebsite } from './render.js';
 
 const app = document.querySelector('#app');
@@ -80,6 +80,7 @@ const viewerImage = document.querySelector('.viewer-image');
 const thumbTray = document.querySelector('.viewer-thumbs');
 const back = document.querySelector('.viewer-back');
 const forward = document.querySelector('.viewer-forward');
+const galleryCatalogue = new Map([...collections, ...showcaseGalleries].map((project) => [project.key, project]));
 let gallery = null;
 let position = 0;
 let returnFocus = null;
@@ -100,11 +101,11 @@ function explore(project, initialPhoto = 0) {
   returnFocus = document.activeElement;
   document.querySelector('#viewer-heading').textContent = project.name;
   const description = document.querySelector('#viewer-description');
-  const isConcept = project.key === 'vision';
-  description.textContent = isConcept ? 'Home design concept' : '';
-  description.hidden = !isConcept;
+  const hasDescription = Boolean(project.description);
+  description.textContent = project.description || '';
+  description.hidden = !hasDescription;
   viewer.classList.toggle('single-photo', project.images.length === 1);
-  if (isConcept) viewer.setAttribute('aria-describedby', 'viewer-description');
+  if (hasDescription) viewer.setAttribute('aria-describedby', 'viewer-description');
   else viewer.removeAttribute('aria-describedby');
   thumbTray.replaceChildren();
   project.images.forEach((image, index) => {
@@ -127,7 +128,8 @@ function explore(project, initialPhoto = 0) {
   document.querySelector('.viewer-close').focus();
 }
 document.querySelectorAll('[data-project]').forEach((trigger) => trigger.addEventListener('click', () => {
-  explore(trigger.dataset.project === 'vision' ? vision : collections.find((item) => item.key === trigger.dataset.project), Number(trigger.dataset.photo || 0));
+  const project = galleryCatalogue.get(trigger.dataset.project);
+  if (project) explore(project, Number(trigger.dataset.photo || 0));
 }));
 back.addEventListener('click', () => displayPhoto(position - 1));
 forward.addEventListener('click', () => displayPhoto(position + 1));

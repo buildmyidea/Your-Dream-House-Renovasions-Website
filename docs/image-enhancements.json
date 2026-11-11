@@ -1,0 +1,509 @@
+[
+  {
+    "source": "public/assets/project-01.webp",
+    "website_asset": "public/assets/enhanced/project-01.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "40140a0271f06e82f0806695f7ee7339aecf33d23bc3a9c9d2ec8afe0c1d2fb0",
+    "enhanced_sha256": "83433ac1223176794cfdcff0234fa0a47d2520890e24e7c326800fa1ac03b72d",
+    "webp_bytes": 385898
+  },
+  {
+    "source": "public/assets/project-02.webp",
+    "website_asset": "public/assets/enhanced/project-02.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "67df73040cebdc0c71238606beef04c59e650761a47ff79b654c1df9e698c3f7",
+    "enhanced_sha256": "57c42e7904a00bfa8fb847e6d53f98df1f4bd8e303086ed1ed65b6bdee264f69",
+    "webp_bytes": 93958
+  },
+  {
+    "source": "public/assets/project-03.webp",
+    "website_asset": "public/assets/enhanced/project-03.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "333d9737b40a386c1d2be81abceabdc3519ae81168c3707799f0cf9684879b8b",
+    "enhanced_sha256": "288faed29347ff130ec54bbdab559a13bcdc01284882076af520eee0ba376b44",
+    "webp_bytes": 382548
+  },
+  {
+    "source": "public/assets/project-04.webp",
+    "website_asset": "public/assets/enhanced/project-04.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "db7109508293ccb544bf22610f1208fd25469fb7d643216cefe8308acce84f75",
+    "enhanced_sha256": "6f0f7cd15925fa9840cd451258e9e910422ad94557edda85ce8a500f04afbe0f",
+    "webp_bytes": 305002
+  },
+  {
+    "source": "public/assets/project-05.webp",
+    "website_asset": "public/assets/enhanced/project-05.webp",
+    "source_pixels": [
+      250,
+      326
+    ],
+    "enhanced_pixels": [
+      1098,
+      1432
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "00d78d11e77da68f17799bfb7e1c71bfd8a32b84e784307e3b99f9c67ba9b843",
+    "enhanced_sha256": "5625d4140b6a09cbd234e15fcac234e1178cd778fa846229f224b72c938feee3",
+    "webp_bytes": 261514
+  },
+  {
+    "source": "public/assets/project-06.webp",
+    "website_asset": "public/assets/enhanced/project-06.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "fae5e6a917174d3a70425c32357651acd887d4b04fce07719a9ec9beb1231aa5",
+    "enhanced_sha256": "29dbb969a0c1da7cb7fa90a55035b3e53a54e70ed4db1dd6fb38ff8fc86ddafe",
+    "webp_bytes": 218084
+  },
+  {
+    "source": "public/assets/project-07.webp",
+    "website_asset": "public/assets/enhanced/project-07.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "db72ce32f49de92382c92ddf555217e57d87d09fe807f1d0fcb4e0705aac6bbf",
+    "enhanced_sha256": "5853016774e6727ff1c9184577c5ed083ded9fa59cd16c517aeabac14c5e236b",
+    "webp_bytes": 118400
+  },
+  {
+    "source": "public/assets/project-08.webp",
+    "website_asset": "public/assets/enhanced/project-08.webp",
+    "source_pixels": [
+      333,
+      250
+    ],
+    "enhanced_pixels": [
+      1448,
+      1086
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "80ea0f066afef983f0d250b46a6d633bd0361f2161188013357012899d5fd4aa",
+    "enhanced_sha256": "d3dd01998e3e6a126e8ca1eae09bbaf5b9ffdec72534032af75c68389252fb41",
+    "webp_bytes": 448046
+  },
+  {
+    "source": "public/assets/project-09.webp",
+    "website_asset": "public/assets/enhanced/project-09.webp",
+    "source_pixels": [
+      250,
+      339
+    ],
+    "enhanced_pixels": [
+      1077,
+      1461
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "d8480f58f5d0a2ab46dc997de4e1e5b00e9e1f3f7ed401c3158e568d585af9c4",
+    "enhanced_sha256": "957a762331c524ae644e02c6f12c2ef4cd0bef731dd6507e3cfae435f9361728",
+    "webp_bytes": 379916
+  },
+  {
+    "source": "public/assets/project-10.webp",
+    "website_asset": "public/assets/enhanced/project-10.webp",
+    "source_pixels": [
+      250,
+      333
+    ],
+    "enhanced_pixels": [
+      1087,
+      1447
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "efd0b57a0c77a13a14752dfd54dd23ceb83b1f319db8acd542560752b83273f0",
+    "enhanced_sha256": "c3f5e7388162f93e06af23a242d3dae32b436273f993d9ecab29c4fba12b3c60",
+    "webp_bytes": 461860
+  },
+  {
+    "source": "public/assets/project-11.webp",
+    "website_asset": "public/assets/enhanced/project-11.webp",
+    "source_pixels": [
+      1500,
+      1125
+    ],
+    "enhanced_pixels": [
+      1448,
+      1086
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "6cda4c1be9e792593ce14a19a2948c55d5bdc52feddac183841249ec20647cf7",
+    "enhanced_sha256": "6c490081275f7982b2cb43369d80fc99f41419a2c99e319adc2a796894a31b78",
+    "webp_bytes": 424524
+  },
+  {
+    "source": "public/assets/project-12.webp",
+    "website_asset": "public/assets/enhanced/project-12.webp",
+    "source_pixels": [
+      1090,
+      1500
+    ],
+    "enhanced_pixels": [
+      1069,
+      1472
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "95fe54237ab1ea64db620f86f6d17aa4c6dd4bc1559cc7e2f0e45f2221183442",
+    "enhanced_sha256": "258b4c492e2a83f5057fe2ec9fbd5d82dc3be75a07c85553c30d3bc07faf88cf",
+    "webp_bytes": 337626
+  },
+  {
+    "source": "public/assets/project-13.webp",
+    "website_asset": "public/assets/enhanced/project-13.webp",
+    "source_pixels": [
+      1500,
+      1125
+    ],
+    "enhanced_pixels": [
+      1448,
+      1086
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "7077c7be7a82a212810fd83918fa208ee4b7c94baad41d1ee7805ab814ac0fa6",
+    "enhanced_sha256": "39462d25c83e669236f656e1fd1c31b86d87a9e62474f5efd3c8890733232a59",
+    "webp_bytes": 386624
+  },
+  {
+    "source": "public/assets/project-14.webp",
+    "website_asset": "public/assets/enhanced/project-14.webp",
+    "source_pixels": [
+      1500,
+      1125
+    ],
+    "enhanced_pixels": [
+      1448,
+      1086
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "13da1d72ae8d10987b366ba742efffe89217e1aedf30239b3ddf0828aa1eba02",
+    "enhanced_sha256": "c55292d2bb2575b5b113048fede180dac3916f92233b570319652e1af392e5c9",
+    "webp_bytes": 759878
+  },
+  {
+    "source": "public/assets/project-15.webp",
+    "website_asset": "public/assets/enhanced/project-15.webp",
+    "source_pixels": [
+      1125,
+      1500
+    ],
+    "enhanced_pixels": [
+      1086,
+      1449
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "df0214483b55a8ea9c9fc6d5119309511de195b7d03762caad97ad74331bc0be",
+    "enhanced_sha256": "79d0400ee9fbd6c3a346c5e0d2a2be05796c5420b464867db47978e2ae85735e",
+    "webp_bytes": 570884
+  },
+  {
+    "source": "public/assets/project-16.webp",
+    "website_asset": "public/assets/enhanced/project-16.webp",
+    "source_pixels": [
+      1125,
+      1500
+    ],
+    "enhanced_pixels": [
+      1086,
+      1449
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "aad7e4699a41b816f8288d713ca2455a00a2fc5a567eeb5125ead90a613d0fae",
+    "enhanced_sha256": "4f07cbc64c150861ec22cbd82c1756f4f98c3a9853708519622ad5c150c8beb0",
+    "webp_bytes": 664122
+  },
+  {
+    "source": "public/assets/project-17.webp",
+    "website_asset": "public/assets/enhanced/project-17.webp",
+    "source_pixels": [
+      1125,
+      1500
+    ],
+    "enhanced_pixels": [
+      1086,
+      1448
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "d5d58f9f74e1ed689ee25d3daeb0569d05671f8549f7d4790fa99f4722f77f26",
+    "enhanced_sha256": "97617b3f2240f6f21e9679cf8253bd62989a3d6bdc1a0f40507c6dbb681f216d",
+    "webp_bytes": 565352
+  },
+  {
+    "source": "public/assets/project-18.webp",
+    "website_asset": "public/assets/enhanced/project-18.webp",
+    "source_pixels": [
+      1500,
+      1125
+    ],
+    "enhanced_pixels": [
+      1449,
+      1086
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "2afac799b177bdd04af70c56b7471c52f6914d982814be4e3bbb618f5d9b8c33",
+    "enhanced_sha256": "b5a280799d4225ac9bdc11a7e4d1987a315ad9b88ce9f353a77844c8a0052159",
+    "webp_bytes": 626804
+  },
+  {
+    "source": "public/assets/project-19.webp",
+    "website_asset": "public/assets/enhanced/project-19.webp",
+    "source_pixels": [
+      1125,
+      1500
+    ],
+    "enhanced_pixels": [
+      1086,
+      1449
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "5ff4eeeb4967f7b9617c7ec32674bb7892a15d600fc49833d750eea1abfd4293",
+    "enhanced_sha256": "878a8b761c9dd368df6fbf577a0571fac9366bc74cbd0fd51a960db863bdce82",
+    "webp_bytes": 626728
+  },
+  {
+    "source": "public/assets/tinas-house-cover.webp",
+    "website_asset": "public/assets/enhanced/tinas-house-cover.webp",
+    "source_pixels": [
+      1536,
+      1024
+    ],
+    "enhanced_pixels": [
+      1536,
+      1024
+    ],
+    "processing": "AI restoration; WebP encoding preserves generated pixel dimensions",
+    "source_sha256": "8308c6d324145503c288a535a28a4bab659b94a018f39c68506005307cde5547",
+    "enhanced_sha256": "cff7b46bd85f0b76adcb341a38358e0f23fb5e2a3360d0abd68786c198c6e1f1",
+    "webp_bytes": 773290
+  },
+  {
+    "source": "public/assets/originals/nov-11/bathroom-finished.jpg",
+    "website_asset": "public/assets/enhanced/bathroom-finished.webp",
+    "source_pixels": [
+      1179,
+      875
+    ],
+    "enhanced_pixels": [
+      1456,
+      1080
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "project photograph",
+    "source_sha256": "ff93977d917e25cfbbd3b26e397d2442a785a743b2cae32bede4bc44f3461c5a",
+    "enhanced_sha256": "8fc007f64055e1e4592975d549b80f08a6602b8991920550254f31f3571b99ab",
+    "webp_bytes": 215210
+  },
+  {
+    "source": "public/assets/originals/nov-11/ndis-ramp-timber.jpg",
+    "website_asset": "public/assets/enhanced/ndis-ramp-timber.webp",
+    "source_pixels": [
+      1179,
+      770
+    ],
+    "enhanced_pixels": [
+      1552,
+      1013
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "accessibility reference",
+    "source_sha256": "1fc65d519076efe22d70ccb91e9cf850f0d08e2737f366d6d0b3207d3985ba2d",
+    "enhanced_sha256": "d2a989b54b3fa17b3fde01b0a48c0adc26a1d5931514bcaedf2f53206935ba1a",
+    "webp_bytes": 560842
+  },
+  {
+    "source": "public/assets/originals/nov-11/ndis-ramp-metal.jpg",
+    "website_asset": "public/assets/enhanced/ndis-ramp-metal.webp",
+    "source_pixels": [
+      1179,
+      766
+    ],
+    "enhanced_pixels": [
+      1556,
+      1011
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "accessibility reference",
+    "source_sha256": "985117b1d2b70b7818dd793e3b80a4b678f818691a038b48215fee943d4b30d1",
+    "enhanced_sha256": "440a793783c2ac865c77af437e361bb53c2c0bbdc29baee8c64a2594125134d4",
+    "webp_bytes": 582030
+  },
+  {
+    "source": "public/assets/originals/nov-11/strata-04.jpg",
+    "website_asset": "public/assets/enhanced/strata-04.webp",
+    "source_pixels": [
+      1440,
+      1920
+    ],
+    "enhanced_pixels": [
+      1086,
+      1448
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "project photograph",
+    "source_sha256": "c7e5bb4752c7a6af224a9f1c685e2438d079096a41b4c2a8cc48cc25c2a02ffd",
+    "enhanced_sha256": "422f384d1f73dc5d23bdbf05c4c0a21c2aa8e4e51d4a88c6a7855c225cf0b7b9",
+    "webp_bytes": 624450
+  },
+  {
+    "source": "public/assets/originals/nov-11/strata-02.jpg",
+    "website_asset": "public/assets/enhanced/strata-02.webp",
+    "source_pixels": [
+      1440,
+      1920
+    ],
+    "enhanced_pixels": [
+      1086,
+      1448
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "project photograph",
+    "source_sha256": "883cffff8d558434f1c35c450886af9920f200d88ebd2a0e5dc9849cb6f41228",
+    "enhanced_sha256": "d7ea8766f47245d7163354bc273b4dc10805b626702fde8006ce0dafa4c34bc0",
+    "webp_bytes": 657376
+  },
+  {
+    "source": "public/assets/originals/nov-11/strata-01.jpg",
+    "website_asset": "public/assets/enhanced/strata-01.webp",
+    "source_pixels": [
+      1440,
+      1920
+    ],
+    "enhanced_pixels": [
+      1086,
+      1448
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "project photograph",
+    "source_sha256": "468c74c6f3c1efefee9b1f4c998b78cd625233d7906625bd38c276f349291f52",
+    "enhanced_sha256": "c8719aa671ec27adc590eacd199cb3a5f3b3d5f9dd1eb7d8022703adf398d567",
+    "webp_bytes": 664610
+  },
+  {
+    "source": "public/assets/originals/nov-11/strata-03.jpg",
+    "website_asset": "public/assets/enhanced/strata-03.webp",
+    "source_pixels": [
+      1920,
+      1440
+    ],
+    "enhanced_pixels": [
+      1448,
+      1086
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "project photograph",
+    "source_sha256": "40cc877c4041b1ca5b946974bf4435d92a352c8237fd4a7aa0ceb6ea9e02bf48",
+    "enhanced_sha256": "d30d36a8913bd257f72637e61e4a458570113d87f055c18ee3c3a41b67040eca",
+    "webp_bytes": 604968
+  },
+  {
+    "source": "public/assets/originals/nov-11/commercial-design-01.jpg",
+    "website_asset": "public/assets/enhanced/commercial-design-01.webp",
+    "source_pixels": [
+      637,
+      891
+    ],
+    "enhanced_pixels": [
+      1061,
+      1483
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "3D design concept",
+    "source_sha256": "009cd1bdc572d15d917e3ad4dc03eb86cf1d5555687c80e6988176996d6f7462",
+    "enhanced_sha256": "ed00758363c7261822b717b7a5d7deef813afd23a599967f4ccc1e18132ada1e",
+    "webp_bytes": 160258
+  },
+  {
+    "source": "public/assets/originals/nov-11/commercial-design-02.jpg",
+    "website_asset": "public/assets/enhanced/commercial-design-02.webp",
+    "source_pixels": [
+      1179,
+      889
+    ],
+    "enhanced_pixels": [
+      1444,
+      1089
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "3D design concept",
+    "source_sha256": "e7441f9c4ea1e37526a918dd7421e1ffdd71b3680cf6046eb876889c2ed6d360",
+    "enhanced_sha256": "24e446b4358c0d5292f738f69924e9f3c4f9100bef757cf8504e6f8f86c2acea",
+    "webp_bytes": 229902
+  },
+  {
+    "source": "public/assets/originals/nov-11/commercial-design-03.jpg",
+    "website_asset": "public/assets/enhanced/commercial-design-03.webp",
+    "source_pixels": [
+      1173,
+      764
+    ],
+    "enhanced_pixels": [
+      1554,
+      1012
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "3D design concept",
+    "source_sha256": "614cd83010c394e459d51cd7f14f6c5a55765b160b8e8ffcce2c9aa6f6974257",
+    "enhanced_sha256": "08994cb0791d285dbe4ed2b95d2d4a4d1cfc77e117b17d4ec825ec25290bc54c",
+    "webp_bytes": 160398
+  },
+  {
+    "source": "public/assets/originals/nov-11/commercial-design-04.jpg",
+    "website_asset": "public/assets/enhanced/commercial-design-04.webp",
+    "source_pixels": [
+      1179,
+      760
+    ],
+    "enhanced_pixels": [
+      1562,
+      1007
+    ],
+    "processing": "AI clarity restoration; WebP encoding preserves generated dimensions",
+    "classification": "3D design concept",
+    "source_sha256": "01bc763a3cbc1123019f78ff165fd9e365ee9d9ffd15c06973ff9f223dac1615",
+    "enhanced_sha256": "c6ed1403abe86a641cd89fde19673d2d2793c3c3159aee042100388b8ea365b5",
+    "webp_bytes": 157878
+  }
+]

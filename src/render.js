@@ -1,10 +1,10 @@
-import { business, collections, comparisons, pageCopy, services, vision } from './content.js';
+import { business, collections, comparisons, designConcepts, pageCopy, ramps, services } from './content.js';
 
 const html = (text) => String(text).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 function projectTile(project) {
   const image = project.images[project.cover];
   return `<article class="work-tile" data-reveal data-kind="${project.type}">
-    <div class="work-photo"><img src="${image.url}" alt="${html(image.alt)}" loading="lazy" width="800" height="560" />${project.key === 'bathroom' ? '<span class="photo-stage">In progress</span>' : ''}</div>
+    <div class="work-photo"><img src="${image.url}" alt="${html(image.alt)}" loading="lazy" width="800" height="560" /></div>
     <div class="work-card-details"><h3>${html(project.name)}</h3><button class="work-trigger action action-outline action-small" type="button" data-project="${project.key}" aria-label="View ${html(project.name)}">View project</button></div>
   </article>`;
 }
@@ -29,7 +29,18 @@ function comparisonPanel(comparison) {
   </article>`;
 }
 
+function designCard(design) {
+  const cover = design.images[design.cover || 0];
+  return `<article class="design-card ${design.key === 'vision' ? 'home-concept' : 'commercial-concept'}" data-reveal>
+    <div class="design-cover"><img src="${cover.url}" alt="${html(cover.alt)}" width="1536" height="1024" loading="lazy" /></div>
+    <div class="design-card-copy"><p class="design-type">${html(design.description)}</p><h3>${html(design.name)}</h3>
+    ${design.images.length > 1 ? `<div class="design-thumbnails" aria-label="Explore 3D design views">${design.images.map((image, index) => `<button type="button" data-project="${design.key}" data-photo="${index}" aria-label="Open ${html(image.caption)}"><img src="${image.url}" alt="" width="180" height="120" loading="lazy" /></button>`).join('')}</div>` : ''}
+    <button class="action action-outline" type="button" data-project="${design.key}" aria-label="View ${html(design.name)}">View design</button></div>
+  </article>`;
+}
+
 export function renderWebsite() {
+  const strata = collections.find((project) => project.key === 'strata');
   return `
   <a href="#page-content" class="jump-link">Skip to content</a>
   <header class="masthead">
@@ -51,8 +62,8 @@ export function renderWebsite() {
           <p class="brand-promise">DESIGN. TRANSFORM. ELEVATE.</p>
         </div>
         <div class="hero-media">
-          <div class="hero-image-frame"><img class="opening-photo" src="/assets/project-13.webp" width="1500" height="1125" alt="The team carrying out rural property improvement works" fetchpriority="high" /></div>
-          <article class="hero-project-card"><img src="/assets/project-05.webp" width="250" height="326" alt="Completed timber deck with built-in seating" /><div><h2>Room to enjoy<br />the outdoors.</h2><button class="action action-outline action-small" type="button" data-project="deck" aria-label="View the outdoor deck transformation">View project</button></div></article>
+          <div class="hero-image-frame"><img class="opening-photo" src="/assets/enhanced/project-13.webp" width="1500" height="1125" alt="The team carrying out rural property improvement works" fetchpriority="high" /></div>
+          <article class="hero-project-card"><img src="/assets/enhanced/project-05.webp" width="250" height="326" alt="Completed timber deck with built-in seating" /><div><h2>Room to enjoy<br />the outdoors.</h2><button class="action action-outline action-small" type="button" data-project="deck" aria-label="View the outdoor deck transformation">View project</button></div></article>
         </div>
       </div>
     </section>
@@ -66,7 +77,10 @@ export function renderWebsite() {
         <ul class="accessibility-options" aria-label="Home modification services"><li data-reveal>Bathroom modifications</li><li data-reveal>Wider doorways</li><li data-reveal>Ramps &amp; easier access</li></ul>
         <a class="action action-purple" href="#contact" data-interest="NDIS &amp; Accessibility">Discuss home modifications</a>
       </div>
-      <div class="accessibility-visual" data-reveal><div class="accessibility-image-frame"><img class="accessibility-art" src="/assets/accessible-home-illustration.png" width="1536" height="1024" alt="Illustration of an accessible home entrance with a wide doorway and a ramp with handrails" loading="lazy" /></div><div class="accessibility-badge" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="19" cy="7" r="3" fill="currentColor"/><path d="M18 14v12h11l4 9M18 18h10M13 20a10 10 0 1 0 10 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>NDIS &amp;<br /><strong>accessibility</strong></span></div></div>
+      <div class="accessibility-visual ramp-feature" data-reveal>
+        <div class="accessibility-image-frame"><img class="accessibility-art" src="${ramps.images[0].url}" width="1179" height="770" alt="${html(ramps.images[0].alt)}" loading="lazy" /></div>
+        <div class="ramp-feature-details"><img src="${ramps.images[1].url}" width="1179" height="766" alt="${html(ramps.images[1].alt)}" loading="lazy" /><div><p class="project-classification">Accessibility examples</p><h3>Access ramps</h3><button class="action action-purple action-small" type="button" data-project="ramps">View ramp options</button></div></div>
+      </div>
     </div></section>
 
     <section class="transformations block" id="transformations" aria-labelledby="transformations-title"><div class="wrap">
@@ -76,9 +90,18 @@ export function renderWebsite() {
 
     <section class="portfolio block" id="work" aria-labelledby="work-title"><div class="wrap">
       <div class="section-intro" data-reveal><div><h2 id="work-title">A closer look<br /><span class="serene">at our work.</span></h2></div><p>${pageCopy.portfolioIntroduction}</p></div>
-      <div class="collection-tools"><div class="collection-filters" role="group" aria-label="Choose a work category"><button class="selected" type="button" data-category="all" aria-pressed="true">All work</button><button type="button" data-category="outdoor" aria-pressed="false">Outdoor</button><button type="button" data-category="renovation" aria-pressed="false">Renovations</button><button type="button" data-category="building" aria-pressed="false">Building</button></div><span class="collection-result sr-only" aria-live="polite" aria-atomic="true">7 collections</span></div>
+      <div class="collection-tools"><div class="collection-filters" role="group" aria-label="Choose a work category"><button class="selected" type="button" data-category="all" aria-pressed="true">All work</button><button type="button" data-category="outdoor" aria-pressed="false">Outdoor</button><button type="button" data-category="renovation" aria-pressed="false">Renovations</button><button type="button" data-category="building" aria-pressed="false">Building</button><button type="button" data-category="strata" aria-pressed="false">Strata</button></div><span class="collection-result sr-only" aria-live="polite" aria-atomic="true">${collections.length} collections</span></div>
       <div class="work-grid">${collections.map(projectTile).join('')}</div>
-      <article class="vision-feature" data-reveal><img src="${vision.images[0].url}" alt="Tina’s House illustrated home and floor plan" width="1536" height="1024" loading="lazy" /><div class="vision-copy"><h3>Tina’s House</h3><p>Home design concept</p></div><button class="action action-outline" type="button" data-project="vision" aria-label="View Tina’s House design concept">View design</button></article>
+    </div></section>
+
+    <section class="strata-feature block" id="strata" aria-labelledby="strata-title"><div class="wrap strata-layout">
+      <div class="strata-copy" data-reveal><p class="eyebrow">FOR STRATA MANAGERS &amp; PROPERTY OWNERS</p><h2 id="strata-title">Care for your<br /><span class="serene">shared spaces.</span></h2><p>${pageCopy.strataIntroduction}</p><div class="strata-actions"><a class="action action-gold" href="#contact" data-interest="Strata &amp; Property Maintenance">Discuss strata work</a><button class="action action-outline" type="button" data-project="strata">View strata project</button></div></div>
+      <div class="strata-project" data-reveal><div class="strata-main-photo"><img src="${strata.images[3].url}" alt="${html(strata.images[3].alt)}" width="1920" height="1440" loading="lazy" /></div><div class="strata-photo-detail"><img src="${strata.images[2].url}" alt="${html(strata.images[2].alt)}" width="1440" height="1920" loading="lazy" /></div></div>
+    </div></section>
+
+    <section class="design-showcase block" id="designs" aria-labelledby="designs-title"><div class="wrap">
+      <div class="section-intro" data-reveal><h2 id="designs-title">Home &amp; commercial<br /><span class="serene">design concepts.</span></h2><p>${pageCopy.designsIntroduction}</p></div>
+      <div class="design-grid">${designConcepts.map(designCard).join('')}</div>
     </div></section>
 
     <section class="capabilities block" id="services" aria-labelledby="services-title"><div class="wrap capabilities-grid"><div class="capabilities-intro" data-reveal><h2 id="services-title">Renovations,<br /><span class="serene">inside and out.</span></h2><p>${pageCopy.approach}</p><p>${pageCopy.commitment}</p><p>Based in ${business.location}, we work across ${business.region}.</p><a class="action action-dark" href="#contact">Discuss your project</a></div><div class="service-accordion">${services.map((service, index) => `<details class="service-detail" data-reveal${index === 0 ? ' open' : ''}><summary><h3>${html(service.name)}</h3><span class="detail-sign" aria-hidden="true"></span></summary><div class="service-body"><p>${service.text}</p><a class="action action-outline action-small" href="#contact" data-interest="${html(service.value)}">Enquire about this service</a></div></details>`).join('')}</div></div></section>

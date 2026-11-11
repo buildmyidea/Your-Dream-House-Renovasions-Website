@@ -15,18 +15,21 @@ export const pageCopy = {
   heroLead: 'Built around',
   heroAccent: 'you.',
   heroDescription: 'Make more of the home you have. We carry out renovations, NDIS home modifications and outdoor building works across Sydney, with clear communication from the first conversation.',
-  comparisonIntroduction: 'See how we turned a small courtyard into a deck with built-in seating and gave a weathered shed a fresh exterior.',
-  portfolioIntroduction: 'Take a closer look at our work, from bathroom renovations and timber decks to shed improvements and land clearing.',
+  comparisonIntroduction: 'See the change from a stripped-out bathroom to a finished shower space, alongside the deck and shed transformations.',
+  portfolioIntroduction: 'Explore bathroom renovations, outdoor building works and property repairs for homes and shared spaces.',
   approach: 'It might be a bathroom that no longer suits you, a home that needs more room or a yard you’d like to use more. We’ll talk through what you need and help you decide where to start.',
   commitment: 'You can expect clear communication and quality workmanship, whether we’re making one room easier to use or taking on a larger renovation.',
   contactIntroduction: 'Tell us what you’d like to change and where your property is. We’ll get in touch to discuss the work and arrange a free quote.',
   accessibilityIntroduction: 'Your home should be comfortable to move around in. We modify bathrooms, doorways and access points to help make everyday tasks safer and easier.',
   accessibilityDetail: 'Every person uses their home differently. We’ll listen to what’s difficult now and talk through the changes that could help.',
+  strataIntroduction: 'We repair paving and shared access areas for strata properties. If a pathway or building entrance needs attention, talk to us about the work.',
+  designsIntroduction: 'Explore Tina’s House and kitchen concepts, from the overall layout to cabinetry and finishes in 3D.',
 };
 
 const picture = (id, caption, alt) => ({
-  url: `/assets/project-${String(id).padStart(2, '0')}.webp`, caption, alt,
+  url: `/assets/enhanced/project-${String(id).padStart(2, '0')}.webp`, caption, alt,
 });
+const image = (file, caption, alt) => ({ url: `/assets/enhanced/${file}.webp`, caption, alt });
 
 export const collections = [
   {
@@ -52,10 +55,11 @@ export const collections = [
   },
   {
     key: 'bathroom', type: 'renovation', name: 'Bathroom renovation',
-    summary: 'From strip-out to waterproofing.', cover: 1, stage: 'In progress',
+    summary: 'From strip-out and waterproofing to a finished bathroom.', cover: 2, stage: 'Completed',
     images: [
       picture(1, 'Strip-out', 'A bathroom with exposed framing and old tiles during strip-out'),
       picture(2, 'Waterproofing', 'Waterproofed bathroom walls and floor with a recessed shower niche'),
+      image('bathroom-finished', 'Finished bathroom', 'Completed grey tiled bathroom with a walk-in shower, recessed niches and a white basin'),
     ],
   },
   {
@@ -90,6 +94,16 @@ export const collections = [
       picture(11, 'Updated exterior', 'A refreshed dark corrugated shed with roller doors'),
     ],
   },
+  {
+    key: 'strata', type: 'strata', name: 'Strata paving & access repairs',
+    summary: 'Repairs to paved entrances and shared access areas.', cover: 3, stage: 'Project stages',
+    images: [
+      image('strata-04', 'Existing paving', 'Broken and cracked paving beside a concrete footpath and planting bed'),
+      image('strata-02', 'Pathway detail', 'An existing paved access area with a tactile panel and visible cracks'),
+      image('strata-01', 'Work in progress', 'Tactile access paving beside a footpath with tools at the edge of the work area'),
+      image('strata-03', 'Entrance paving', 'Tiled building entrance with a tactile access panel and an orange cone'),
+    ],
+  },
 ];
 
 export const comparisons = [
@@ -103,12 +117,38 @@ export const comparisons = [
     name: 'Shed exterior refresh',
     description: 'A weathered shed exterior takes on a fresh, dark finish.',
   },
+  {
+    projectKey: 'bathroom', before: 0, after: 2,
+    name: 'Bathroom renovation',
+    description: 'From bathroom strip-out to a finished tiled shower space.',
+  },
 ];
 
 export const vision = {
-  key: 'vision', name: 'Tina’s House', summary: 'An illustrated home design concept, shown for inspiration.',
-  images: [{ url: '/assets/tinas-house-cover.webp', caption: 'Home design concept', alt: 'Tina’s House concept illustration with a residence, detailed floor plan and landscaped grounds' }],
+  key: 'vision', kind: 'concept', name: 'Tina’s House', description: 'Home design concept', summary: 'An illustrated home design concept, shown for inspiration.',
+  images: [{ url: '/assets/enhanced/tinas-house-cover.webp', caption: 'Home design concept', alt: 'Tina’s House concept illustration with a residence, detailed floor plan and landscaped grounds' }],
 };
+
+export const commercialDesigns = {
+  key: 'commercial-designs', kind: 'concept', name: 'Commercial 3D designs', description: '3D design concepts', cover: 0,
+  images: [
+    image('commercial-design-03', 'Island & seating concept', '3D kitchen design with a long island, three dark stools and warm timber panels'),
+    image('commercial-design-01', 'Open kitchen concept', '3D kitchen design with a stone island, bar stools, timber cabinetry and pendant lighting'),
+    image('commercial-design-02', 'Cabinetry & finishes', '3D kitchen design with light and timber cabinetry, an island and built-in appliances'),
+    image('commercial-design-04', 'Kitchen & storage concept', '3D kitchen design with an island, two chairs, tall appliances and open timber shelving'),
+  ],
+};
+
+export const ramps = {
+  key: 'ramps', kind: 'reference', name: 'Access ramp examples', description: 'Accessibility reference images',
+  images: [
+    image('ndis-ramp-timber', 'Timber access ramp', 'Reference image of a timber-decked access ramp with grey handrails beside a brick building'),
+    image('ndis-ramp-metal', 'Metal access ramp', 'Reference image of a metal access ramp with handrails outside a glass entrance'),
+  ],
+};
+
+export const designConcepts = [vision, commercialDesigns];
+export const showcaseGalleries = [ramps, ...designConcepts];
 
 export const services = [
   { name: 'NDIS & accessibility', value: 'NDIS & Accessibility', text: 'Changes to a bathroom, ramp or doorway can make a difference to daily life. We work through your access needs with you and plan the modifications around how you use your home.' },
@@ -117,4 +157,5 @@ export const services = [
   { name: 'Land clearing', value: 'Land Clearing', text: 'We prepare properties through vegetation clearing and site clean-ups, subject to applicable approvals and site conditions.' },
   { name: 'Fencing & outdoor works', value: 'Fencing & Outdoor Works', text: 'Give your boundary a new fence, replace a gate or turn an unused corner into a deck. We build outdoor spaces you can enjoy and use every day.' },
   { name: 'Property improvements', value: 'Property Improvements', text: 'We repair and refurbish homes and commercial spaces, including sheds and building exteriors. Let us know what needs attention and we’ll discuss the work with you.' },
+  { name: 'Strata & property maintenance', value: 'Strata & Property Maintenance', text: 'We repair paving and shared access areas for strata properties. Tell us which entrances or pathways need attention and we’ll discuss the work with you or your strata manager.' },
 ];
