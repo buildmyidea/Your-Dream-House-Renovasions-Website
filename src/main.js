@@ -157,26 +157,97 @@ const response = document.querySelector('.enquiry-result');
 const status = document.querySelector('.enquiry-status');
 const draftText = document.querySelector('.draft-text');
 const copy = document.querySelector('.copy-draft');
-document.querySelectorAll('[data-interest]').forEach((link) => link.addEventListener('click', () => { enquiry.elements.interest.value = link.dataset.interest; }));
-enquiry.querySelectorAll('[required]').forEach((field) => field.addEventListener('input', () => field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.')));
-enquiry.addEventListener('submit', (event) => {
+const enquiryFallback = document.querySelector('.enquiry-fallback');
+const enquirySubmit = enquiry.querySelector('[type="submit"]');
+const enquirySubmitLabel = enquirySubmit.textContent;
+const enquiryFields = [...enquiry.querySelectorAll('input[required], select[required], textarea[required]')];
+let enquiryPending = false;
+
+function validateEnquiryField(field) {
+  field.setCustomValidity(field.value.trim() ? '' : 'Please complete this field.');
+  field.removeAttribute('aria-invalid');
+}
+
+document.querySelectorAll('[data-interest]').forEach((link) => link.addEventListener('click', () => {
+  if (enquiryPending) return;
+  enquiry.elements.interest.value = link.dataset.interest;
+  validateEnquiryField(enquiry.elements.interest);
+}));
+enquiryFields.forEach((field) => field.addEventListener('input', () => validateEnquiryField(field)));
+
+enquiry.addEventListener('submit', async (event) => {
   event.preventDefault();
+  if (enquiryPending) return;
+  enquiryFields.forEach(validateEnquiryField);
   if (!enquiry.reportValidity()) return;
-  const values = Object.fromEntries([...new FormData(enquiry)].map(([key, value]) => [key, value.trim()]));
+
+  const data = new FormData(enquiry);
+  for (const [key, value] of data) {
+    if (typeof value === 'string') data.set(key, value.trim());
+  }
+  const values = Object.fromEntries(data);
   const subject = `Project enquiry — ${values.interest}`;
-  const body = `Name: ${values.fullName}\nEmail: ${values.emailAddress}\nPhone: ${values.telephone}\nService: ${values.interest}\nSuburb: ${values.locality || 'Not provided'}\n\nProject details:\n${values.description}`;
+  data.set('subject', subject);
+  const body = `Name: ${values.fullName}\nEmail: ${values.email}\nPhone: ${values.telephone}\nService: ${values.interest}\nSuburb: ${values.locality || 'Not provided'}\n\nProject details:\n${values.description}`;
   draftText.value = `To: ${business.email}\nSubject: ${subject}\n\n${body}`;
-  response.hidden = false;
-  status.textContent = 'Your email draft is ready. Review and send it in your email app. Nothing has been sent yet.';
   copy.textContent = 'Copy enquiry details';
-  const link = document.createElement('a');
-  link.href = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  link.hidden = true;
-  document.body.append(link);
-  link.click();
-  link.remove();
+  enquiryFallback.hidden = true;
+  response.hidden = false;
+  response.dataset.state = 'sending';
+  status.textContent = 'Sending your enquiry…';
+  enquiryPending = true;
+  enquiry.setAttribute('aria-busy', 'true');
+  enquirySubmit.textContent = 'Sending…';
+  const controls = [...enquiry.elements].filter((control) => !control.disabled);
+  controls.forEach((control) => { control.disabled = true; });
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000);
+  let focusTarget = status;
+  try {
+    const submission = await fetch(enquiry.action, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' },
+      signal: controller.signal,
+    });
+    const result = await submission.json().catch(() => null);
+    if (!submission.ok || !result || result.ok === false || result.errors?.length) {
+      const fieldErrors = Array.isArray(result?.errors) ? result.errors.filter((error) => {
+        const field = enquiry.elements.namedItem(error.field);
+        if (!enquiryFields.includes(field) || typeof error.message !== 'string') return false;
+        field.setCustomValidity(error.message);
+        field.setAttribute('aria-invalid', 'true');
+        if (focusTarget === status) focusTarget = field;
+        return true;
+      }) : [];
+      const message = fieldErrors.length
+        ? fieldErrors.map((error) => error.message).join(' ')
+        : 'We couldn’t confirm your enquiry was sent. Please try again, or email the details below.';
+      throw new Error(message);
+    }
+    enquiry.reset();
+    draftText.value = '';
+    response.dataset.state = 'success';
+    status.textContent = 'Thanks, your enquiry has been sent. We’ll be in touch to discuss your project.';
+  } catch (error) {
+    response.dataset.state = 'error';
+    status.textContent = focusTarget !== status && error instanceof Error
+      ? error.message
+      : 'We couldn’t confirm your enquiry was sent. Please try again, or email the details below.';
+    enquiryFallback.hidden = false;
+  } finally {
+    clearTimeout(timeout);
+    controls.forEach((control) => { control.disabled = false; });
+    enquirySubmit.textContent = enquirySubmitLabel;
+    enquiry.removeAttribute('aria-busy');
+    enquiryPending = false;
+    focusTarget.focus();
+  }
 });
+
 copy.addEventListener('click', async () => {
+  response.dataset.state = 'info';
   try {
     await navigator.clipboard.writeText(draftText.value);
     copy.textContent = 'Details copied';

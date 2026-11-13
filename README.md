@@ -1,8 +1,8 @@
 # Your Dream Home Renovations
 
-An original website designed and implemented from scratch. The uploaded starter HTML is not used as a template or runtime dependency. The client's photographs, logo and business information are reference material.
+The published website is the root `index.html`, supplied by the client and updated in place. It contains the page, embedded photographs and fonts, styling and interaction code. Preserve this file's current content and layout when making changes.
 
-The design uses a layered editorial hero, project photography, a responsive portfolio, a contrasting dark services section and a separate home-design concept feature. The quote form and business details remain those supplied by the client.
+The modules under `src/` and the review exporter retain the earlier modular implementation. The enquiry form integration is kept in sync with the published HTML, but regenerating the page from these modules can replace later client changes to its copy, photographs and portfolio. The remaining notes describe that source implementation and its tooling.
 
 The client-supplied HTML is now also used as a copy reference. The extracted text and adaptation map are in `docs/copy-reference.md`. The new site's layout and code remain original.
 
@@ -47,7 +47,7 @@ The production build is written to `dist/`. The production preview uses port 417
 
 ## Files
 
-- `index.html` is a new, minimal application entry with metadata and a JavaScript-disabled contact fallback. It is not the uploaded HTML file.
+- `index.html` is the published, self-contained page with embedded assets and inline interactions. Its form also supports a normal POST when JavaScript is disabled.
 - `src/render.js` renders the original page markup for the live site and downloads.
 - `src/main.js` mounts the page and binds navigation, filters, the image viewer and enquiries.
 - `src/style.css` contains the original design and responsive layouts.
@@ -61,7 +61,7 @@ The logo appears in the header. The work portfolio has eight collections and 24 
 
 The project photographs and design concept use separately saved AI restorations. The ten smallest photographs were restored from roughly 250-pixel-wide originals to over 1,000 pixels wide. Larger images received clarity restoration; their generated pixel dimensions are recorded without claiming an increase over their source resolution. AI can reconstruct fine texture, so retain the originals for factual reference and avoid treating enhanced details as construction measurements. The restoration review checks the project stage, framing, main structures and objects; the concept's room labels and dimensions remain those supplied. `docs/image-enhancements.json` records each original and enhanced image, dimensions and file hashes. WebP encoding reduces file size without changing the generated pixel dimensions.
 
-Service links select the matching enquiry option. The form prepares a `mailto:` draft to `infoydhr@gmail.com`; it does not send or store enquiries. Visitors can review and send the draft in their email application. A copyable text fallback remains available if no mail application opens or clipboard access is denied.
+Service links select the matching enquiry option. The form submits enquiries directly to `https://formspree.io/f/xvkagvpg`. The `email` field sets the reply-to address, and the selected service is included in the subject. A hidden `_gotcha` field supports Formspree's honeypot filtering. The form shows its sending, success and error states, prevents duplicate requests while sending, and resets only after a successful response. On failure, visitors retain their entries and can copy their enquiry into an email to `infoydhr@gmail.com`. A normal form POST provides a JavaScript-disabled fallback. Recipient, domain restrictions and spam settings are managed in the Formspree dashboard; the public endpoint needs no website API secret.
 
 The strata feature and portfolio filter introduce paving/access repairs for strata managers and property owners. Its enquiry button selects Strata & Property Maintenance. The design showcase replaces the previous single-row Tina’s House feature; the new renders are not presented as rooms in Tina’s House or as completed construction.
 
@@ -75,7 +75,7 @@ After changes, check:
 - Every supplied work photograph, next/previous controls, wrapping, thumbnails, Escape and restored focus.
 - Both design concept galleries, selected 3D preview thumbnails and the ramp reference gallery.
 - Native service accordions and enquiry selection.
-- Required fields and the encoded email subject and body. Prevent external email-app activation in automated tests.
+- Required fields, the reply-to email, service subject and all enquiry values in the Formspree request. Intercept requests in automated tests to check success, server validation, connection failure, duplicate prevention and retry without creating real enquiries.
 - Clipboard success and failure paths.
 - Image loading, console errors, internal anchors and horizontal overflow on narrow screens.
 - Accessibility with both the page and image viewer open.

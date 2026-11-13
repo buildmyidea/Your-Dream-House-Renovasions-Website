@@ -146,7 +146,7 @@ def export(output):
             "Then double-click the extracted index.html to open the website in your browser.\n"
             "The package includes the page, styling, photographs and fonts. No installation or local server is required.\n"
             "The gallery and enquiry controls use JavaScript. The page content remains visible if scripts are blocked.\n"
-            "Email enquiries open a draft in your email application for you to review and send.\n"
+            "The enquiry form submits through Formspree and needs an internet connection. If sending fails, you can copy your details into an email.\n"
             "If a browser preview disables controls, download and extract the ZIP and open index.html in Chrome, Edge, Firefox or Safari.\n"
         ))
     with ZipFile(review_archive_path) as archive:
@@ -168,7 +168,7 @@ def export(output):
             "For local review, serve the extracted folder with a static web server.\n"
             "With Python installed, use py -m http.server 3000 on Windows or python3 -m http.server 3000 on macOS/Linux.\n"
             "Then open localhost on port 3000 in your browser.\n\n"
-            "The enquiry form prepares an email draft for visitors to review and send in their email application.\n"
+            "The enquiry form submits through Formspree and shows confirmation on the page. An email fallback is available if sending fails.\n"
         ))
     with ZipFile(archive_path) as archive:
         if archive.testzip() is not None:
