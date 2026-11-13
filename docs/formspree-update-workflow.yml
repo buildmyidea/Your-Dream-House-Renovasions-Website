@@ -1,0 +1,35 @@
+# Inactive proposal. Copy to .github/workflows/connect-formspree.yml only after approval.
+name: Apply reviewed Formspree integration
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/connect-formspree.yml']
+permissions:
+  contents: write
+concurrency: connect-formspree
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Apply the scoped form update
+        run: node scripts/connect-formspree.cjs
+      - name: Build and check syntax
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+          node --check src/main.js
+          node --check src/render.js
+          git diff --check
+      - name: Verify form states without sending enquiries
+        run: |
+          npm install --prefix "$RUNNER_TEMP/ydhr-form-check" --ignore-scripts --no-audit --no-fund happy-dom
+          node scripts/check-formspree.mjs
+      - name: Save the verified integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html src/main.js src/render.js src/style.css README.md
+          git commit -m "Connect enquiry form to Formspree"
+          git push origin HEAD:main
