@@ -65,6 +65,16 @@ Service links select the matching enquiry option. The form submits enquiries dir
 
 The strata feature and portfolio filter introduce paving/access repairs for strata managers and property owners. Its enquiry button selects Strata & Property Maintenance. The design showcase replaces the previous single-row Tina’s House feature; the new renders are not presented as rooms in Tina’s House or as completed construction.
 
+## Search indexing
+
+The preferred website URL is `https://www.yourdreamhomerenovations.com/`. The published page contains a matching canonical tag, a descriptive title and meta description, indexing instructions, and Organization, WebSite and WebPage structured data. The business record uses the public company name, Sydney location, Australia-wide service area, phone, email and existing logo. Keep these details aligned with the visible page.
+
+`public/sitemap.xml` lists the homepage, which is the site's only public page. Section anchors and gallery states are not separate sitemap entries. Add future pages only when their public URLs exist and can be indexed. Update `lastmod` when the page content changes.
+
+`public/robots.txt` allows crawling and advertises the sitemap. Vite copies both files into `dist/` during the normal build. The existing favicon is served from `/favicon.svg` so crawlers can fetch it directly.
+
+After deployment, submit `https://www.yourdreamhomerenovations.com/sitemap.xml` in the existing Google Search Console property. Use URL Inspection for the preferred homepage URL, check Google's fetched page and request indexing. Review the sitemap, page-indexing and search-performance reports as Google processes the changes.
+
 ## Browser validation
 
 After changes, check:
